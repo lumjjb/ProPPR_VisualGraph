@@ -1,0 +1,24 @@
+node {
+    fill-color: black;
+    size: 10px;
+    text-size: 10px;
+}
+node.marked {
+    fill-color: red;
+    size: 20px;
+}
+
+edge{
+	fill-color: blue;
+	size: 1px;
+	text-size: 10px;
+}
+
+edge .marked{
+	fill-color: red;
+	size: 3px;
+}
+
+graph {
+	fill-color: #FFFFCC;
+}
