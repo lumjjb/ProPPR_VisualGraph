@@ -10,16 +10,48 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Iterator;
 
+import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
 
 
 
 public class Main {
 
 	public static void main(String[] args) {
-		simulate_simple();
+	     
+		ControlUI mainUI = new ControlUI();
+		//startUI();
+	        
+		
+		//simulate_simple();
 		
 		//misc();
 	}
+	
+	
+	
+	/*
+	public void actionPerformed(ActionEvent e) {
+	    //Handle open button action.
+	    if (e.getSource() == openButton) {
+	        int returnVal = fc.showOpenDialog(jfrm);
+
+	        if (returnVal == JFileChooser.APPROVE_OPTION) {
+	            File file = fc.getSelectedFile();
+	            //This is where a real application would open the file.
+	            System.out.println("Opening: " + file.getName() + "." + "\n");
+	        } else {
+	        	System.out.println("Open command cancelled by user." + "\n");
+	        }
+	   }
+	}
+	*/
+
 	/**
 	 * @return nothing 
 	 * 
@@ -40,7 +72,7 @@ public class Main {
 		
 		//Comment out these 2 liens for no animate
 		gs.process();
-		gs.display();
+		//gs.display(500,500,0,0);
 
 		
 		// Dynamic actions to simujlate PPR

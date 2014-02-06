@@ -154,7 +154,7 @@ public class GraphSimAlgorithm extends SinkAdapter implements DynamicAlgorithm {
 	{
 		graph.addNode(v);
 		Node gnode = graph.getNode(v);
-		gnode.addAttribute("ui.label", v);
+		gnode.addAttribute("_ui.label", v);
 	}
 	
 	/**
@@ -191,7 +191,7 @@ public class GraphSimAlgorithm extends SinkAdapter implements DynamicAlgorithm {
 	{
 		graph.addEdge(e,v1,v2,directed);
 		Edge gedge = graph.getEdge(e);
-		gedge.addAttribute("ui.label", e);
+		gedge.addAttribute("_ui.label", e);
 	}
 	
 	/**
@@ -304,6 +304,7 @@ public class GraphSimAlgorithm extends SinkAdapter implements DynamicAlgorithm {
 		if (markedEdge!=null)
 		{
 			Edge gedge = graph.getEdge(markedEdge);
+			// TODO: Change to replace marked with ""?
 			gedge.setAttribute("ui.class", "");	
 		}
 		markedEdge=null;
@@ -341,6 +342,19 @@ public class GraphSimAlgorithm extends SinkAdapter implements DynamicAlgorithm {
 			gedge.setAttribute("ui.class", "");
 		}
 	}
+	
+	/**
+	 * Unmark all nodes on the graph
+	 */
+	public void unmarkNodes()
+	{
+		for (Node gnode : graph.getNodeSet())
+		{
+			gnode.setAttribute("ui.class", "");
+		}
+	}
+	
+	
 	/**
 	 * Flashes the background of the UI
 	 */

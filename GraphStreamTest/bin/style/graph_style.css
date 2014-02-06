@@ -1,12 +1,27 @@
 node {
+	
     fill-color: black;
     size: 10px;
-    text-size: 10px;
+    text-size: 20px;
 }
+
+node :clicked{
+    fill-color: green;
+    size: 15px;
+}
+
+
+
 node.marked {
     fill-color: red;
-    size: 20px;
+    size: 10px;
 }
+
+node.highlight {
+    fill-color: green;
+    size: 10px;
+}
+
 
 edge{
 	fill-color: blue;
@@ -22,3 +37,4 @@ edge .marked{
 graph {
 	fill-color: #FFFFCC;
 }
+

@@ -2,10 +2,13 @@ package gsim;
 
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
+import org.graphstream.ui.swingViewer.Viewer;
 
 import style.StyleImporter;
 
 import java.io.*;
+
+import javax.swing.text.View;
 
 /**
  * The Graph Simulator object. This should be the object that the caller
@@ -18,6 +21,8 @@ import java.io.*;
  * 4) (optional) compute - Starts worker thread to simulate graph animations
  * 5) (optional) importEvents/exportEvents - import/export events for worker
  * thread
+ * 
+ * 
  * 
  * *) Run actions
  * - addVertex
@@ -39,6 +44,7 @@ public class GraphSim {
 	 * @param graph_name
 	 */
 	public GraphSim(String graph_name) {
+		//this.graph = new SingleGraph(graph_name);
 		this.graph = new SingleGraph(graph_name);
 	}
 
@@ -48,7 +54,21 @@ public class GraphSim {
 	 * graohstream library
 	 */
 	public void display() {
-		graph.display();
+		Viewer vwr = graph.display();
+		
+		// Set it so program doesnt abort when close window 
+		vwr.setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
+		
+	}
+	
+	public Viewer get_display()
+	{	
+		
+		Viewer viewer = new Viewer(graph,Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
+		viewer.enableAutoLayout();
+		//return null;
+		return viewer;
+		//graph.display(); 
 	}
 
 	/**
@@ -77,6 +97,16 @@ public class GraphSim {
 		galgo.compute();
 	}
 
+	public void markHighlight(String s)
+	{
+		for (Node n : graph.getNodeSet())
+		{
+			if (n.getId().contains(s))
+			{
+				n.setAttribute("ui.class", n.getAttribute("ui.class")+ ",highlight");
+			}
+		}
+	}
 	
 
 	
@@ -102,7 +132,10 @@ public class GraphSim {
 		}
 	}
 
-	
+	public void unmarkNodes()
+	{
+		galgo.unmarkNodes();
+	}
 	/**
 	 * Reads the SimJob Array from a serialized file
 	 * @param f - the file that contains the serialized SimJobs
@@ -182,6 +215,7 @@ public class GraphSim {
 		galgo.ppr_teleport(v);
 
 	}
+	
 	
 	
 	/**
@@ -290,22 +324,28 @@ public class GraphSim {
 			String e = ed.e;
 			
 			// Check if vertices are present and add if not
+			// _ to hide
 			if (graph.getNode(v1)==null) { 
 				graph.addNode(v1);
 				Node n = graph.getNode(v1);
-				n.setAttribute("ui.label", v1);
+				n.setAttribute("_ui.label", v1);
 				}
 			if (graph.getNode(v2)==null) { 
 				graph.addNode(v2);
 				Node n = graph.getNode(v2);
-				n.setAttribute("ui.label", v2);
+				n.setAttribute("_ui.label", v2);
 			}
 			
 			// Bug - add edge
 			graph.addEdge(ed.toString(), v1, v2, true);
 			Edge edge = graph.getEdge(ed.toString());
-			edge.setAttribute("ui.label", e);
+			edge.setAttribute("_ui.label", e);
 		}
+	}
+	
+	public Graph getGraph()
+	{
+		return graph;
 	}
 
 }
