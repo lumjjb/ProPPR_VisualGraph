@@ -20,18 +20,18 @@ For each action taken, it is put into an action queue of tasks to visualize.
 A Job Oracle is spawned by GraphSimAlgorithm, which does all the heavy lifting. It takes this queue and, according to the set delay, dequeues the queue and runs the simulated action on the displayed graph. 
 
 
-_Running the App_
-
+Running the App
+--------------
 Besides getting all the relative file paths set in the eclipse workspace, the application should work out of the box by running the Main class.\\
 
-_Importing a graph_
-
+Importing a graph
+-----------------
 To import a graph, once the UI is loaded, just click "Browse Graph" and select the graph and select "Load Graph" to load it into the UI. \\
 
 We note that the graph has to be in the format specified in the program. To take a graph which is in the format of ProPPR's cooked format and use the "Visual Graph Parser", which is a python project that takes in a cooked file and makes them baked - i.e. suitable for use in Visual ProPPR. \\
 
-_Documentation_
-
+Documentation
+-----------------
 The documentation can be found in the docs folder, which contains the Java docs.
 
 For details of the graphstream API, you may view the documents either through their java docs or online at http://graphstream-project.org/doc/.
