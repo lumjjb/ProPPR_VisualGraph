@@ -1,15 +1,18 @@
-*Welcome to the Visual ProPPR Tool*
+Welcome to the Visual ProPPR Tool
+=====================================
 
 This tool is used to visualize ProPPR proof graphs and show the personalized page rank algorithm.
 
-_About this package_
+About this package
+-----------------
 
 Visual ProPPR is built in Java SDK 7 and uses a graph visualization library called "Graph Stream", which can be viewed at http://graphstream-project.org/
 
 The workspace of this project is in Eclipse. 
 
-_About #visual ProPPR_
 
+About #visual ProPPR
+-----------------
 The main features of this include the GUI which allows you to take in a graph is a specified format and import it. There is a public interfacing class called GraphSim, which is located in the 'sim' package. This is the public interface that should be used to run visualization of the page rank process/adding/deleting vertices. 
 
 For each action taken, it is put into an action queue of tasks to visualize.
