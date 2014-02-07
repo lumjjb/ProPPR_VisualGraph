@@ -22,13 +22,13 @@ A Job Oracle is spawned by GraphSimAlgorithm, which does all the heavy lifting. 
 
 Running the App
 --------------
-Besides getting all the relative file paths set in the eclipse workspace, the application should work out of the box by running the Main class.\\
+Besides getting all the relative file paths set in the eclipse workspace, the application should work out of the box by running the Main class.
 
 Importing a graph
 -----------------
-To import a graph, once the UI is loaded, just click "Browse Graph" and select the graph and select "Load Graph" to load it into the UI. \\
+To import a graph, once the UI is loaded, just click "Browse Graph" and select the graph and select "Load Graph" to load it into the UI. 
 
-We note that the graph has to be in the format specified in the program. To take a graph which is in the format of ProPPR's cooked format and use the "Visual Graph Parser", which is a python project that takes in a cooked file and makes them baked - i.e. suitable for use in Visual ProPPR. \\
+We note that the graph has to be in the format specified in the program. To take a graph which is in the format of ProPPR's cooked format and use the "Visual Graph Parser", which is a python project that takes in a cooked file and makes them baked - i.e. suitable for use in Visual ProPPR. 
 
 Documentation
 -----------------
