@@ -2,9 +2,20 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="GraphStream/gs-core-1.2/gs-core-1.2.jar"/>
-	<classpathentry kind="lib" path="GraphStream/gs-algo-1.2/gs-algo-1.2.jar"/>
-	<classpathentry kind="lib" path="GraphStream/gs-ui-1.2/gs-ui-1.2.jar"/>
-	<classpathentry kind="lib" path="GraphStream/gs-core-1.2/gs-core-1.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="GraphStream/gs-core-1.2/gs-core-1.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/brandon/Documents/workspace/GraphStreamTest/GraphStream/gs-core-1.2/gs-core-1.2-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="GraphStream/gs-algo-1.2/gs-algo-1.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/brandon/Documents/workspace/GraphStreamTest/GraphStream/gs-algo-1.2/gs-algo-1.2-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="GraphStream/gs-ui-1.2/gs-ui-1.2.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/Users/brandon/Documents/workspace/GraphStreamTest/GraphStream/gs-ui-1.2/gs-ui-1.2-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

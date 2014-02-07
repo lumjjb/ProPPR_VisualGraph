@@ -233,7 +233,7 @@ public class GraphSim {
 	public void importGraph(File f) {
 		
 		String graphdata = getStringFromFile(f);
-		System.out.println(graphdata);
+		//System.out.println(graphdata);
 		ImportEdgeDetails[] ied = getImportEdgeDetails(graphdata);
 		addImportEdgeDetailsToGraph(ied);
 		return;
@@ -318,7 +318,7 @@ public class GraphSim {
 		for (ImportEdgeDetails ed : ied)
 		{
 			
-			System.out.println(ed.toString());
+			//System.out.println(ed.toString());
 			String v1 = ed.v1;
 			String v2 = ed.v2;
 			String e = ed.e;
@@ -343,6 +343,10 @@ public class GraphSim {
 		}
 	}
 	
+	/**
+	 * Get the graph object of the current graph 
+	 * @return graph object of the current graph 
+	 */
 	public Graph getGraph()
 	{
 		return graph;

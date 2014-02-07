@@ -6,16 +6,21 @@ import java.io.File;
 
 import org.graphstream.graph.Graph;
 import org.graphstream.ui.swingViewer.Viewer;
-
+/**
+ * Maing logic controller which the UI calls
+ * @author brandon
+ *
+ */
 public class MainLogic {
 	
-	GraphUIProperty gUIProp;
-	GraphSim gs;
 	
-	public MainLogic(GraphUIProperty gUIProp)
+	private GraphSim gs;
+	
+	public MainLogic()
 	{
-		this.gUIProp = gUIProp;
+
 	}
+	
 	public Viewer simulate_graph(File graph_file)
 	{
 		gs = new GraphSim("PageRankGraph");
@@ -37,6 +42,7 @@ public class MainLogic {
 
 	
 	}
+	
 	public Graph getGraph()
 	{
 		return gs.getGraph();

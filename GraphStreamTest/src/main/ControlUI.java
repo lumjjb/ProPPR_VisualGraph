@@ -31,43 +31,49 @@ import org.graphstream.ui.swingViewer.ViewerListener;
 import org.graphstream.ui.swingViewer.ViewerPipe;
 
 
-
+/**
+ * UI Class that contains all the UI functions
+ * @author brandon
+ *
+ */
 public class ControlUI extends JFrame implements ActionListener {
 
 	
 	// Logic Variables
-	MainLogic MLogic;
-	File graph_file = null;
-	File anim_file = null;
+	private MainLogic MLogic;
+	private 	File graph_file = null;
+	private 	File anim_file = null;
 	
-	GraphUIProperty gUIProp;
+	private  GraphUIProperty gUIProp;
 	
 	// UI Components
 	
-	int frm_width, frm_height;
-	int ctrl_width, ctrl_height;
+	private  int frm_width, frm_height;
+	private  int ctrl_width, ctrl_height;
 	
-	JFileChooser fc;
-	JFrame  jfrm;
+	private JFileChooser fc;
+	private JFrame  jfrm;
 	
-	JLabel lbl_header;
-	JLabel lbl_graphPath;
-	JButton btn_chooseGraph;
+	private JLabel lbl_header;
+	private JLabel lbl_graphPath;
+	private JButton btn_chooseGraph;
 	
-	JButton btn_loadGraph;
+	private JButton btn_loadGraph;
 	
-	JPanel ctrl_panel;
+	private JPanel ctrl_panel;
 	
-	JTextField txt_highlight;
-	JButton btn_highlight;
+	private JTextField txt_highlight;
+	private JButton btn_highlight;
 	
-	View vw=null;
+	private View vw=null;
 	
 	// Set % of span
-	double btn_chooseGraph_h = .1;
+	private double btn_chooseGraph_h = .1;
 	
 	
-	
+	/**
+	 * Constructor, inits and starts UI
+	 */
 	public ControlUI ()
 	{
 		init ();
@@ -75,6 +81,10 @@ public class ControlUI extends JFrame implements ActionListener {
 	
 	}
 	
+	/**
+	 * initializes height, width variables, etc. 
+	 * and creates main logic object for use by UI
+	 */
 	private void init ()
 	{
 		
@@ -95,9 +105,12 @@ public class ControlUI extends JFrame implements ActionListener {
 		gUIProp.posx = 0;
 		gUIProp.posy = 0;
 		
-		MLogic= new MainLogic(gUIProp);
+		MLogic= new MainLogic();
 	}
 	
+	/**
+	 * Adds objects to UI, prepares UI window
+	 */
 	private  void startUI(){
 		
 		jfrm = new JFrame();
@@ -135,12 +148,10 @@ public class ControlUI extends JFrame implements ActionListener {
 		ctrl_panel.add(btn_loadGraph);
 		btn_loadGraph.addActionListener(this);
 
-		/* Features to add
+		// Features to add
 		// Block Label
 		JLabel lbl_div1 = new JLabel("-----------------------------------");
 		ctrl_panel.add(lbl_div1);
-
-		
 
 		// Highlight filter  Text Field and button
 		txt_highlight = new JTextField();
@@ -154,7 +165,7 @@ public class ControlUI extends JFrame implements ActionListener {
 			}
 		});
 		ctrl_panel.add(btn_highlight);
-		*/
+		
 		
 		jfrm.setVisible(true);
 		
@@ -168,102 +179,18 @@ public class ControlUI extends JFrame implements ActionListener {
         //fromViewer.addViewerListener((ViewerListener) new NodeClickListener());
         //fromViewer.addSink(graph);
         
-        
-/*
-		
-		
-		// Initialize Frame + set default behaviors
-		jfrm=new JFrame("VisualProPPR Control");
-		jfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    jfrm.setLayout(new BorderLayout()); 
-
-		
-		// Set width height and location
-		Dimension screen_dim = Toolkit.getDefaultToolkit().getScreenSize();
-
-		jfrm.setSize(frm_width,frm_height);
-		
-		jfrm.setLocation(screen_dim.width - ctrl_width, 0);
-		
-		
-	    
-		
-		
-	     
-	     // Label
-	     lbl_header=new JLabel("Welcome to VisualProPPR");
-	     jfrm.add(lbl_header);
-
-	     
-	     // Choose graph button
-	     
-	     //button dims
-	     int btn_width = (int)((double)ctrl_width * 0.8);
-	     int btn_height = (int)((double)ctrl_height * btn_chooseGraph_h);
-	     btn_chooseGraph = new JButton("Graph Button Chooser");
-	     btn_chooseGraph.setVerticalTextPosition(AbstractButton.CENTER);
-	     btn_chooseGraph.setHorizontalTextPosition(AbstractButton.LEADING); //aka LEFT, for left-to-right locales
-	     btn_chooseGraph.addActionListener(this);
-	     btn_chooseGraph.setLocation(frm_width-ctrl_width, 0);
-	     btn_chooseGraph.setSize(btn_width, btn_height);
-	     jfrm.add(btn_chooseGraph,BorderLayout.LINE_END);
-	    
-	     // Chosen Graph Label
-	     lbl_graphPath =new JLabel("");
-	     lbl_graphPath.setText("< No Graph Chosen >");
-	     // Get location offset
-	     //btn_chooseGraph.getLocation() + btn_chooseGraph.getSize();
-	     lbl_graphPath.setLocation(frm_width - ctrl_width, 50);
-	     
-	     jfrm.add(lbl_graphPath, BorderLayout.LINE_END);
-	     
-	     
-	     
-	     
-	     // File Chooser Component
-	     //Create a file chooser
-	     fc = new JFileChooser();
-	     //In response to a button click:
-	     //fc.showOpenDialog(jfrm);
-	     
-	     
-	     // Load graph  button
-	     btn_width = (int)((double)ctrl_width * 0.8);
-	     btn_height = (int)((double)ctrl_height * btn_chooseGraph_h);
-	     btn_loadGraph = new JButton("Load Graph");
-	     btn_loadGraph.setVerticalTextPosition(AbstractButton.CENTER);
-	     btn_loadGraph.setHorizontalTextPosition(AbstractButton.LEADING); //aka LEFT, for left-to-right locales
-	     btn_loadGraph.addActionListener(this);
-	     btn_loadGraph.setLocation(frm_width-ctrl_width, 100);
-	     //btn_loadGraph.setSize(btn_width, btn_height);
-	     btn_loadGraph.setSize(100, 100);
-	     jfrm.add(btn_loadGraph,BorderLayout.LINE_END);
-	     
-	     //int returnVal = fc.showOpenDialog(null);
-	     
-	     
-	     // Add components
-	     jfrm.setVisible(true);
-
-	    */ 
-	     /* 
-	      * 		// Set it so program doesnt abort when close window 
-		vwr.setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
-		org.graphstream.ui.swingViewer.View vw = vwr.getDefaultView();
-		vw.setSize(width,height);
-		vw.setLocation(posx, posy);
-		
-	      */
+   
 	}
 	
 	
 	
 	
-	
+	/**
+	 * Action listener for click of buttons
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
-		System.out.println("Event:" + e);
-		System.out.println("Source:" + source);
+		
 		
 		if (source == btn_chooseGraph)
 		{
@@ -285,6 +212,9 @@ public class ControlUI extends JFrame implements ActionListener {
 	}
 	
 	
+	/**
+	 * Function to laod graph and create graph listener
+	 */
 	NodeClickListener clisten=null;
 	private void loadGraph()
 	{
@@ -308,13 +238,11 @@ public class ControlUI extends JFrame implements ActionListener {
 			vw = vwr.addDefaultView(false);
 			
 			
-			System.out.println(gUIProp.width);
-			System.out.println(gUIProp.height);
 			vw.setSize(gUIProp.width,gUIProp.height);
 			vw.setLocation(gUIProp.posx, gUIProp.posy);
 			
 			
-			/* Features to add
+			// Features to add
 			// We connect back the viewer to the graph,
 	        // the graph becomes a sink for the viewer.
 	        // We also install us as a viewer listener to
@@ -323,7 +251,7 @@ public class ControlUI extends JFrame implements ActionListener {
 	        clisten = new NodeClickListener(fromViewer, vw, MLogic.getGraph());
 	        fromViewer.addViewerListener((ViewerListener) clisten);
 			
-			*/
+			
 
 			// Add in frame
 			jfrm.add(vw,BorderLayout.LINE_START);
